@@ -15,6 +15,10 @@
         @apply max-w-[90%] mx-auto
     }
 
+    .bg-gradient {
+        @apply bg-gradient-to-l from-primary-400 to-primary-600 text-white
+    }
+
     /* AUTH */
     .bg-auth {
         background-color: #0C152A;
@@ -28,6 +32,36 @@
             background-position: 50% 100%;
         }
     }
+
+    /* DASHBOARD */
+    .dashboard__layout {
+        @apply flex min-h-screen
+    }
+
+    .sidemenu {
+        @apply flex flex-col h-screen bg-white max-w-[300px] w-full border border-slate-300 py-4 px-6
+    }
+
+    .sidemenu__link {
+        @apply flex items-center gap-2 px-3 py-4 rounded-lg text-slate-500 hover:sidemenu__link--active transition-all
+    }
+
+    .sidemenu__link--active {
+        @apply  bg-gradient-to-l from-primary-400 to-primary-600 text-white
+    }
+
+    .navmenu {
+        @apply px-4 bg-white py-4 w-full border-b border-slate-300 flex justify-between items-center
+    }
+
+    .navmenu__search {
+        @apply bg-[#f1f4fb] p-2 rounded-lg flex justify-between items-center max-w-xs w-full
+    }
+
+    .navmenu__search input {
+        @apply bg-transparent outline-none w-full
+    }
+
 }
 
 @layer components {

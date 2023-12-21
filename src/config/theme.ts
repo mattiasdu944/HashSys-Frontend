@@ -12,7 +12,7 @@ export const lightTheme: ConfigThemes = {
 
         },
         colors: {
-            background: '#f3f3f3',
+            background: '#f1f4fb',
             primary: {
                 DEFAULT: '#6b7de9',
                 '50': '#dbecfe',
@@ -25,7 +25,6 @@ export const lightTheme: ConfigThemes = {
                 '700': '#204bad',
                 '800': '#1f4289',
                 '900': '#0c152a',
-                foreground: '#fefefe',
             },
         }
     }
