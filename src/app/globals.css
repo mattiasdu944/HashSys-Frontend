@@ -39,7 +39,7 @@
     }
 
     .sidemenu {
-        @apply flex flex-col h-screen bg-white max-w-[300px] w-full border border-slate-300 py-4 px-6
+        @apply hidden md:flex flex-col h-screen bg-white max-w-[300px] w-full border border-slate-300 py-4 px-6
     }
 
     .sidemenu__link {
@@ -55,7 +55,7 @@
     }
 
     .navmenu__search {
-        @apply bg-[#f1f4fb] p-2 rounded-lg flex justify-between items-center max-w-xs w-full
+        @apply hidden md:flex bg-[#f1f4fb] p-2 rounded-lg justify-between items-center max-w-xs w-full
     }
 
     .navmenu__search input {
