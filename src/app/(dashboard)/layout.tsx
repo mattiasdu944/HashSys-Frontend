@@ -1,11 +1,12 @@
-import { validateToken } from "@/modules/auth";
+import { useSession, validateToken } from "@/modules/auth";
 import { NavMenu, SideMenu } from "@/modules/shared";
 import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
 
+    const { user } = await useSession();
     const validate = await validateToken();
-    
+
     if( !validate ){
         redirect('/auth/login');
     }
@@ -15,7 +16,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         <div className="dashboard__layout">
             <SideMenu />
             <main className="h-screen w-full overflow-y-auto">
-                <NavMenu />
+                <NavMenu user={user}/>
                 {children}
             </main>
         </div>
