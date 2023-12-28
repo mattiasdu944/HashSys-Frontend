@@ -1,14 +1,6 @@
-export interface LoginResponse{
-    user: {
-      id:       string,
-      name:     string,
-      lastname: string,
-      email:    string,
-      role:     'Administrador' | 'Empleado',
-      status:   'Activo' | 'Inactivo',
-      createdAt: string;
-      updatedAt: string;
-    },
+import { User } from "./user";
 
-    token: string
-  }
+export interface LoginResponse {
+  user: User;
+  token: string
+}

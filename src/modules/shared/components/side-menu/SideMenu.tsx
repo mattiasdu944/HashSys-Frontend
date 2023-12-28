@@ -1,8 +1,10 @@
-import { sidemenu_options } from '@/config/constants'
 import { titleFont } from '@/config/fonts'
+import { sidemenu_options } from '@/config/constants'
+
+
 import { SideMenuItem } from './SideMenuItem'
-import { LuLogOut, LuStore } from 'react-icons/lu'
-import { Button } from '@nextui-org/button';
+import { LogoutButton } from './LogoutButton';
+import {  LuStore } from 'react-icons/lu'
 
 export const SideMenu = () => {
     return (
@@ -29,9 +31,7 @@ export const SideMenu = () => {
                 }
             </ul>
             <div className='flex-1'></div>
-            <Button fullWidth size='lg' color='danger' radius='lg' variant='light' endContent={ <LuLogOut/>  }>
-                Cerrar Sesion
-            </Button>
+            <LogoutButton/>
         </aside>
     )
 }

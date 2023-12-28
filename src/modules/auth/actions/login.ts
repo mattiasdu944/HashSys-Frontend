@@ -4,6 +4,7 @@ import {  cookies } from "next/headers";
 
 import { LoginResponse } from "..";
 import inventoryDb from "@/config/api/inventoryDb"
+import { revalidatePath } from "next/cache";
 
 interface LoginUserResponse {
     isError: boolean,
@@ -17,6 +18,8 @@ export const loginUser = async (email: string, password: string): Promise<LoginU
 
         cookies().set('INV_AUTH_TOKEN', data.token);
         cookies().set('INV_AUTH_USER', JSON.stringify(user));
+
+        revalidatePath('/');
 
         return {
             isError: false,

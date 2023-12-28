@@ -1,6 +1,15 @@
 import { titleFont } from "@/config/fonts";
+import { redirect } from "next/navigation";
+import { validateToken } from "@/modules/auth";
 
-export default function AuthLayout({ children }: { children: React.ReactNode }) {
+export default async function AuthLayout({ children }: { children: React.ReactNode }) {
+    
+    const validate = await validateToken();
+    
+    if( validate ){
+        redirect('/')
+    }
+    
     return (
         <main className="bg-auth md:bg-white md:bg-none grid md:grid-cols-2 lg:grid-cols-5 min-h-screen">
             <section className="max-w-lg lg:col-span-2 mx-auto flex flex-col justify-center">
