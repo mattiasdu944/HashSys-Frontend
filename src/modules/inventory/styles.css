@@ -1,0 +1,12 @@
+
+.navbar {
+    @apply container pt-4
+}
+
+.navbar__menu {
+    @apply p-1 bg-white rounded-md overflow-hidden max-w-max flex
+}
+
+.navbar__menu--item {
+    @apply bg-white p-[10px] font-medium rounded-[7px]
+}

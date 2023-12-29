@@ -8,6 +8,14 @@
     h1 {
         @apply font-bold text-2xl
     }
+
+    section {
+        @apply pt-8
+    }
+
+    p {
+        @apply text-gray-500
+    }
 }
 
 @layer utilities {
