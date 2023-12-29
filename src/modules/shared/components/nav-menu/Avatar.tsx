@@ -21,7 +21,7 @@ export const Avatar = ({ user }: Props) => {
                     }}
                     className="transition-transform"
                     description={ user.role }
-                    name={`${user.name} ${ user.lastname }`}
+                    name={`${user.name}`}
                 />
             </DropdownTrigger>
             <DropdownMenu aria-label="User Actions" variant="flat">

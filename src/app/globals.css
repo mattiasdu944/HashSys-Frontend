@@ -39,11 +39,15 @@
     }
 
     .sidemenu {
-        @apply hidden md:flex flex-col h-screen bg-white max-w-[300px] w-full border border-slate-300 py-4 px-6
+        @apply  absolute -left-[100%] md:left-0 md:relative z-50 flex flex-col h-screen bg-white max-w-[300px] w-full border border-slate-300 py-4 px-6
+    }
+
+    .sidemenu-active {
+        @apply left-[0%]
     }
 
     .sidemenu__link {
-        @apply flex items-center gap-2 px-3 py-4 rounded-lg text-slate-500 hover:sidemenu__link--active transition-all
+        @apply flex items-center gap-2 p-3 text-base md:px-3 md:py-4 rounded-lg text-slate-500 hover:sidemenu__link--active transition-all
     }
 
     .sidemenu__link--active {

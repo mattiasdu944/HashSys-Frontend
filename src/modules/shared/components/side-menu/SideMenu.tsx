@@ -5,6 +5,7 @@ import { sidemenu_options } from '@/config/constants'
 import { SideMenuItem } from './SideMenuItem'
 import { LogoutButton } from './LogoutButton';
 import {  LuStore } from 'react-icons/lu'
+import { CloseSideMenuButton } from './CloseSideMenuButton';
 
 export const SideMenu = () => {
     return (
@@ -30,6 +31,7 @@ export const SideMenu = () => {
                     ))
                 }
             </ul>
+            <CloseSideMenuButton/>
             <div className='flex-1'></div>
             <LogoutButton/>
         </aside>

@@ -15,10 +15,12 @@ export const SideMenuItem = ({ children, icon, path }: Props) => {
 
     const pathname = usePathname();
 
+
+
     return (
-        <Link className={`sidemenu__link ${ pathname == path && 'sidemenu__link--active' }`} href={path}>
+        <Link className={`sidemenu__link ${ pathname.split('/').includes(path.split('/')[1]) || pathname === path ? 'sidemenu__link--active' : '' }`} href={path}>
             <span>{ icon }</span>
-            <span className="text-lg">
+            <span>
                 { children }
             </span>
         </Link>

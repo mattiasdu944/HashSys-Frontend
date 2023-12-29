@@ -4,13 +4,13 @@ import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
 
-    const { user } = await useSession();
     const validate = await validateToken();
-
+    
     if( !validate ){
         redirect('/auth/login');
     }
     
+    const { user } = await useSession();
 
     return (
         <div className="dashboard__layout">
