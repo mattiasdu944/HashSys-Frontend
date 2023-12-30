@@ -1,11 +1,15 @@
+import { CategoryList, NewCategoryModal, getCategories } from "@/modules/inventory";
+import { TitlePage } from "@/modules/shared"
 
-export default function CategoriesPage() {
+
+export default async function CategoriesPage() {
+
+    const categories = await getCategories();
+
     return (
-        <section>
-            <div className="container">
-                <h1>Listado de categorias</h1>
-                <p>Gestiona las categorias para tus productos</p>
-            </div>
-        </section>
+        <>
+            <TitlePage title="Categorias" subTitle="Gestiona las categorias para tus productos" component={ <NewCategoryModal/> }/>
+            <CategoryList categories={categories}/>
+        </>
     );
 }

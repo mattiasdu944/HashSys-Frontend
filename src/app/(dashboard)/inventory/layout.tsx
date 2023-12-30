@@ -7,7 +7,7 @@ export default function InventoryLayout({
 }) {
     return (
         <>
-            <NavBar/>   
+            <NavBar/>
             { children }
         </>
     );

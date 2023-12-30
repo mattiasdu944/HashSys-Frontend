@@ -1,8 +1,11 @@
+import { TitlePage } from "@/modules/shared";
 
 export default function ProductsPage() {
     return (
-        <div>
-            <h1>Hello Page</h1>
-        </div>
+        <> 
+            <TitlePage title="Productos" subTitle="Gestiona los productos de tu empresa"/>
+        
+        
+        </>
     );
 }
