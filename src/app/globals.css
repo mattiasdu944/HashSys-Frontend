@@ -27,6 +27,14 @@
         @apply bg-gradient-to-l from-primary-400 to-primary-600 text-white
     }
 
+    .bg-gradient-rose {
+        @apply bg-gradient-to-l from-rose-400 to-rose-500 text-white
+    }
+
+    .bg-gradient-orange {
+        @apply bg-gradient-to-l from-orange-400 to-orange-600 text-white
+    }
+
     /* AUTH */
     .bg-auth {
         background-color: #0C152A;

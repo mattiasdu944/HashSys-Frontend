@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { LuBuilding, LuClipboardList, LuLayers } from 'react-icons/lu';
+import { LuClipboardList, LuLayers, LuStore } from 'react-icons/lu';
 
 export const NavBar = () => {
 
@@ -32,13 +32,13 @@ export const NavBar = () => {
                     </li>
 
                     <li>
-                        <Link className="flex items-center gap-2 hover:text-primary transition-all" href='/inventory/products'>
+                        <Link className="flex items-center gap-2 hover:text-primary transition-all" href='/inventory/warehouses'>
                             <div className="bg-primary-soft text-gray-500 p-2 rounded-full text-xl">
-                                <LuBuilding />
+                                <LuStore />
                             </div>
                             <p className="font-medium text-black">
-                                Marcas
-                                <span className="block text-sm text-gray-500">marcas de productos</span>
+                                Almacenes
+                                <span className="block text-sm text-gray-500">Almacenes / Sucursales</span>
                             </p>
                         </Link>
                     </li>
