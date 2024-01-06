@@ -7,12 +7,12 @@ interface Props {
     subTitle: string;
 
     button?: string;
-    action?: () => void;
-
+    path?: string;
+    iconButton?: React.ReactNode;
     component?: React.ReactNode;
 }
 
-export const TitlePage = ({ button, action, subTitle, title, component }: Props) => {
+export const TitlePage = ({ button, subTitle, title, component, iconButton, path }: Props) => {
     return (
         <section className="container flex flex-col md:flex-row gap-4 md:items-center justify-between">
             <div>
@@ -21,8 +21,10 @@ export const TitlePage = ({ button, action, subTitle, title, component }: Props)
             </div>
             <div className="flex items-center gap-4">
                 {
-                    button && action && (
-                        <Button onClick={action} className="bg-gradient" color="primary">{button}</Button>
+                    button && path && (
+                        <Link href={path}>
+                            <Button startContent={ iconButton } className="bg-gradient" color="primary">{button}</Button>
+                        </Link>
                     )
                 }
                 {

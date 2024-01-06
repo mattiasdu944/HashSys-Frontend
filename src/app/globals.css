@@ -82,6 +82,14 @@
         @apply bg-transparent outline-none w-full
     }
 
+    /* PRODUCTS */
+    .product__report--container {
+        @apply container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+    }
+
+    .product__report--card {
+        @apply shadow-md max-w-xs w-full p-4
+    }
 }
 
 @layer components {

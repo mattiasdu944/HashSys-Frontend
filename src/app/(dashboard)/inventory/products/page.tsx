@@ -1,12 +1,27 @@
-import { TitlePage } from "@/modules/shared";
-import { ProductReportCard } from '../../../../modules/inventory/components/products/ProductReportCard';
 
-export default function ProductsPage() {
+import { LuPlus } from "react-icons/lu";
+import { TitlePage } from "@/modules/shared";
+import { ProductReportCard, ProductsTable, getAllProducts } from "@/modules/inventory";
+
+
+export default async function ProductsPage() {
+
+    const { meta, products } = await getAllProducts();
+
+
     return (
-        <> 
-            <TitlePage title="Productos" subTitle="Gestiona los productos de tu empresa"/>
-            <ProductReportCard/>
-        
+        <>
+            <TitlePage
+                path="/inventory/products/new"
+                iconButton={ <LuPlus/> }
+                button="Crear producto"
+                title="Productos" subTitle="Gestiona los productos de tu empresa"/>
+            <ProductReportCard
+                totalProducts={ meta.total }
+            />
+            <ProductsTable
+                products={ products }
+            />
         </>
     );
 }
