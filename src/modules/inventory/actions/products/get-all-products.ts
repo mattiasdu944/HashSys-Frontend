@@ -1,9 +1,9 @@
 'use server';
-
 import { cookies } from "next/headers";
-import inventoryDb from "@/config/api/inventoryDb";
+
 import { IProductsResponse } from "../..";
-import Error from "next/error";
+import inventoryDb from "@/config/api/inventoryDb";
+
 
 export async function   getAllProducts( page: number = 1 ) {
     

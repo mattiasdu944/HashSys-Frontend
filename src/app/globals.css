@@ -9,8 +9,12 @@
         @apply font-bold text-2xl
     }
 
+    h2 {
+        @apply font-bold text-xl
+    }
+
     section {
-        @apply pt-8 pb-4
+        @apply pt-8
     }
 
     p {
@@ -89,6 +93,10 @@
 
     .product__report--card {
         @apply shadow-md max-w-xs w-full p-4
+    }
+
+    .product__form {
+        @apply rounded-md container shadow-md bg-white px-6 py-8 w-full
     }
 }
 

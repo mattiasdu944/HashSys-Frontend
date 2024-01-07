@@ -1,8 +1,25 @@
+import { NewProductForm, getCategories } from "@/modules/inventory";
+import { getAllProductTypes } from "@/modules/inventory/actions/products/get-product-types";
+import { TitlePage } from "@/modules/shared";
 
-export default function NewProductPage() {
+export default async function NewProductPage() {
+
+    const categoriePromise = getCategories();
+    const productTypesPromise = getAllProductTypes();
+
+    const [ categories, productTypes ] = await Promise.all([categoriePromise, productTypesPromise]);
+
     return (
-        <div>
-            <h1>Hello Page</h1>
-        </div>
+        <>
+            <TitlePage
+                title="Nuevo producto"
+                subTitle="Agrega un nuevo producto a tu inventario"
+            />
+
+            <NewProductForm
+                categories={ categories } 
+                productTypes={ productTypes }
+            />
+        </>
     );
 }
