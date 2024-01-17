@@ -1,23 +1,75 @@
 'use client'
+import { useState } from "react";
 
-import { FormEvent, useState } from "react";
+import { createCategory } from "../..";
+
 import { LuPlus } from "react-icons/lu";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Textarea } from "@nextui-org/react";
-import { createCategory } from "../..";
 
 
 
 export const NewCategoryModal = () => {
-    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-    const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+    
+    const [hasError, setHasError] = useState({
+        message: '',
+        isError: false
+    });
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+
         e.preventDefault();
-        setIsLoading(true);
-        const { categoryName, description } = e.target as HTMLFormElement;
-        await createCategory(categoryName.value, description.value);
-        setIsLoading(false);
+
+        setHasError({
+            isError: false,
+            message: '',
+        })
+
+        const { categoryName, description, image } = e.target as HTMLFormElement;
+        
+
+        if( categoryName.value.trim() === '' || description.value.trim() === '') {
+            setHasError({
+                isError: true,
+                message: 'Todos los campos deben ser llenados'
+            });
+
+            return;
+        };
+
+        if( image.files.length == 0 ){
+            setHasError({
+                isError: true,
+                message: 'Debe agregar una imagen'
+            });
+
+            return;    
+        }
+
+        const formData = new FormData();
+
+        formData.append('name', categoryName.value);
+        formData.append('description', description.value);
+        formData.append('image', image.files[0]);
+
+        const { isError, message } =  await createCategory(formData);
+
+        if( isError ){
+            setHasError({
+                isError: true,
+                message: message,
+            });
+
+            return;
+        }
+
         onClose();
+        
+        setHasError({
+            isError: false,
+            message: '',
+        })
     }
 
     return (
@@ -26,15 +78,24 @@ export const NewCategoryModal = () => {
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                     {(onClose) => (
-                        <form onSubmit={handleSubmit}>
+                        <form noValidate onSubmit={handleSubmit}>
                             <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
                             <ModalBody>
-                                <Input
-                                    type="file"
-                                    labelPlacement="outside"
-                                    label="Imagen"
-                                    placeholder="Imagen"
-                                />
+
+                                {
+                                    hasError.isError && (
+                                        <p className="text-red-500">{ hasError.message }</p>
+                                    )
+                                }
+
+                                <div className='relative'>
+                                    <input
+                                        type="file"
+                                        name='image'
+                                        accept='image/png, image/jpg, image/jpeg, image/webp,'
+                                        className='file:bg-transparent file:text-primary file:cursor-pointer file:border-none file:p-2 rounded'
+                                    />
+                                </div>
                                 <Input
                                     name="categoryName"
                                     isRequired
@@ -50,9 +111,10 @@ export const NewCategoryModal = () => {
                                 <Button color="danger" variant="light" onPress={onClose}>
                                     Cerrar
                                 </Button>
-                                <Button isLoading={ isLoading } isDisabled={ isLoading } className="bg-gradient" color="primary" type="submit">
+                                <Button className="btn-primary" type="submit">
                                     Guardar
                                 </Button>
+                                
                             </ModalFooter>
                         </form>
                     )}
