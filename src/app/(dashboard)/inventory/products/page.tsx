@@ -13,14 +13,15 @@ export default async function ProductsPage() {
         <>
             <TitlePage
                 path="/inventory/products/new"
-                iconButton={ <LuPlus/> }
+                iconButton={<LuPlus />}
                 button="Crear producto"
-                title="Productos" subTitle="Gestiona los productos de tu empresa"/>
+                title="Productos" subTitle="Gestiona los productos de tu empresa"
+            />
             <ProductReportCard
-                totalProducts={ meta.total }
+                totalProducts={meta.total}
             />
             <ProductsTable
-                products={ products }
+                products={products}
             />
         </>
     );

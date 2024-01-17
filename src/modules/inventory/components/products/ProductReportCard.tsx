@@ -8,7 +8,7 @@ interface Props {
 
 export const ProductReportCard = ({ totalProducts }: Props) => {
     return (
-        <div>
+        <section>
             <div className='product__report--container'>
                 <Card className='product__report--card bg-gradient ' isPressable>
                     <CardHeader className='p-0'>
@@ -51,6 +51,6 @@ export const ProductReportCard = ({ totalProducts }: Props) => {
                 </Card>
 
             </div>
-        </div>
+        </section>
     )
 }
