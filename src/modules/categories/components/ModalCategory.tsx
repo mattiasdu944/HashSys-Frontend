@@ -1,14 +1,15 @@
 import Image from "next/image";
-import { Category } from "../..";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
-import { LuPen, LuTrash } from "react-icons/lu";
 import NotImage from "@/assets/images/not-image.jpg";
+
 import { formatDate } from "@/utils";
+import { ICategory } from "../../inventory";
+
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
 
 interface Props {
     isOpen: boolean;
     onOpenChange: () => void
-    category: Category;
+    category: ICategory;
 }
 
 export const ModalCategory = ({ isOpen, onOpenChange, category }: Props) => {

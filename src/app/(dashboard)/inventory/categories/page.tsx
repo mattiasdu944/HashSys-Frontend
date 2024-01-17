@@ -1,5 +1,6 @@
-import { CategoryList, NewCategoryModal, getCategories } from "@/modules/inventory";
+
 import { TitlePage } from "@/modules/shared"
+import { CategoryList, NewCategoryModal, getCategories } from "@/modules/categories";
 
 
 export default async function CategoriesPage() {

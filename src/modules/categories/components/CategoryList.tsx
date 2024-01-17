@@ -1,8 +1,9 @@
-import { Category } from '../..';
+
+import { ICategory } from '..';
 import { CategoryCard } from './CategoryCard';
 
 interface Props {
-    categories: Category[];
+    categories: ICategory[];
 }
 
 export const CategoryList = ({ categories }: Props) => {
@@ -10,7 +11,7 @@ export const CategoryList = ({ categories }: Props) => {
     return (
         <section>
             <ul className='container'>
-                <li className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <li className="category__list">
                     {
                         categories.map( category => (
                             <CategoryCard key={ category.id } category={category} />

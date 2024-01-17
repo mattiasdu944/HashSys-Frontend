@@ -86,6 +86,11 @@
         @apply bg-transparent outline-none w-full
     }
 
+    /* CATEGORIES */
+    .category__list {
+        @apply gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4
+    }
+
     /* PRODUCTS */
     .product__report--container {
         @apply container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3

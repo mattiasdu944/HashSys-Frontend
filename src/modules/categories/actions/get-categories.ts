@@ -1,7 +1,7 @@
 'use server'
 import { cookies } from 'next/headers';
 import inventoryDb from '@/config/api/inventoryDb';
-import { CategoriesResponse } from '../..';
+import { CategoriesResponse } from '../../inventory';
 
 
 
