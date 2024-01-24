@@ -55,7 +55,7 @@
 
     /* DASHBOARD */
     .dashboard__layout {
-        @apply flex min-h-screen
+        @apply flex min-h-screen relative
     }
 
     .sidemenu {

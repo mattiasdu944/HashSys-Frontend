@@ -5,13 +5,15 @@ import { createCategory } from "..";
 
 import { LuPlus } from "react-icons/lu";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Textarea } from "@nextui-org/react";
+import { toast } from "sonner";
 
 
 
 export const NewCategoryModal = () => {
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-    
+
+    const [isLoading, setIsLoading] = useState(false);
     const [hasError, setHasError] = useState({
         message: '',
         isError: false
@@ -21,30 +23,34 @@ export const NewCategoryModal = () => {
 
         e.preventDefault();
 
+        setIsLoading(true);
         setHasError({
             isError: false,
             message: '',
         })
 
         const { categoryName, description, image } = e.target as HTMLFormElement;
-        
 
-        if( categoryName.value.trim() === '' || description.value.trim() === '') {
+
+        if (categoryName.value.trim() === '' || description.value.trim() === '') {
             setHasError({
                 isError: true,
                 message: 'Todos los campos deben ser llenados'
             });
+            setIsLoading(false);
 
             return;
         };
 
-        if( image.files.length == 0 ){
+        if (image.files.length == 0) {
             setHasError({
                 isError: true,
                 message: 'Debe agregar una imagen'
             });
 
-            return;    
+            setIsLoading(false);
+
+            return;
         }
 
         const formData = new FormData();
@@ -53,23 +59,31 @@ export const NewCategoryModal = () => {
         formData.append('description', description.value);
         formData.append('image', image.files[0]);
 
-        const { isError, message } =  await createCategory(formData);
+        const { isError, message } = await createCategory(formData);
 
-        if( isError ){
-            setHasError({
-                isError: true,
-                message: message,
+        if (isError) {
+            toast.error('Ocurrio un error', {
+                description: message,
             });
+
+            setIsLoading(false);
 
             return;
         }
 
         onClose();
-        
+
+        toast.success('Categoria create', {
+            description: 'Se creo la categoria ' + categoryName.value
+        });
+
         setHasError({
             isError: false,
             message: '',
-        })
+        });
+
+        setIsLoading(false);
+
     }
 
     return (
@@ -79,12 +93,12 @@ export const NewCategoryModal = () => {
                 <ModalContent>
                     {(onClose) => (
                         <form noValidate onSubmit={handleSubmit}>
-                            <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1">Agregar categoria</ModalHeader>
                             <ModalBody>
 
                                 {
                                     hasError.isError && (
-                                        <p className="text-red-500">{ hasError.message }</p>
+                                        <p className="text-red-500">{hasError.message}</p>
                                     )
                                 }
 
@@ -111,10 +125,10 @@ export const NewCategoryModal = () => {
                                 <Button color="danger" variant="light" onPress={onClose}>
                                     Cerrar
                                 </Button>
-                                <Button className="btn-primary" type="submit">
+                                <Button isLoading={isLoading} isDisabled={isLoading} className="btn-primary" type="submit">
                                     Guardar
                                 </Button>
-                                
+
                             </ModalFooter>
                         </form>
                     )}

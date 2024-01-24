@@ -1,6 +1,7 @@
 
 import { TitlePage } from "@/modules/shared"
-import { CategoryList, NewCategoryModal, getCategories } from "@/modules/categories";
+import { NewCategoryModal, getCategories } from "@/modules/categories";
+import { CategoryTable } from "@/modules/categories/components/CategoryTable";
 
 
 export default async function CategoriesPage() {
@@ -10,7 +11,7 @@ export default async function CategoriesPage() {
     return (
         <>
             <TitlePage title="Categorias" subTitle="Gestiona las categorias para tus productos" component={ <NewCategoryModal/> }/>
-            <CategoryList categories={categories}/>
+            <CategoryTable categories={categories}/>
         </>
     );
 }

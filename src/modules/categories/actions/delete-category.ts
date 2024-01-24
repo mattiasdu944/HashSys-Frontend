@@ -6,7 +6,7 @@ import inventoryDb from "@/config/api/inventoryDb"
 import { revalidatePath } from "next/cache";
 
 
-export async function deleteCategory(id: string) {
+export async function deleteCategory(id: number) {
     
     const token = cookies().get('INV_AUTH_TOKEN');
     

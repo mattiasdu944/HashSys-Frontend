@@ -4,11 +4,12 @@ export * from './actions/delete-category'
 export * from './actions/get-categories'
 
 // COMPONENTS
-export * from './components/CategoryCard'
 export * from './components/CategoryCardOptions'
-export * from './components/CategoryList'
+export * from './components/CategoryTable'
 export * from './components/ModalCategory'
+export * from './components/EditCategoryModal'
 export * from './components/NewCategoryModal'
+export * from './components/DeleteCategoryModal'
 
 // INTERFACES
 export type * from './interfaces/categories-response'

@@ -18,7 +18,9 @@ export const CategoryCardOptions = ({ id }: Props) => {
                 </div>
             </DropdownTrigger>
             <DropdownMenu aria-label="Static Actions">
-                <DropdownItem key="edit">Editar</DropdownItem>
+                <DropdownItem key="edit">
+                    {/* <EditCategoryModal/> */}
+                </DropdownItem>
                 <DropdownItem onClick={() => deleteCategory( id )} key="delete" className="text-danger" color="danger">
                     Eliminar
                 </DropdownItem>
