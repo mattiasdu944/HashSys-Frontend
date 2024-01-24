@@ -59,7 +59,7 @@
     }
 
     .sidemenu {
-        @apply  absolute -left-[100%] md:left-0 md:relative z-50 flex flex-col h-screen bg-white max-w-[300px] w-full border border-slate-200 py-4 px-6
+        @apply  absolute -left-[100%] md:left-0 md:relative z-50 flex flex-col h-screen bg-white max-w-[300px] w-full border border-slate-200 py-4 px-6 transition-all
     }
 
     .sidemenu-active {

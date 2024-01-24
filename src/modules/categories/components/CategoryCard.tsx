@@ -2,11 +2,10 @@
 import Image from 'next/image'
 import NotImage from "@/assets/images/not-image.jpg";
 
-import { ICategory } from '..';
+import { CategoryCardOptions, ICategory } from '..';
 
 import { ModalCategory } from './ModalCategory';
-import { LuMoreVertical } from 'react-icons/lu';
-import { useDisclosure, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Card, CardBody, CardFooter } from "@nextui-org/react";
+import { useDisclosure, Card, CardBody, CardFooter } from "@nextui-org/react";
 
 interface Props {
     category: ICategory;
@@ -31,7 +30,7 @@ export const CategoryCard = ({ category }: Props) => {
                 <CardFooter className="flex flex-col">
                     <div className='w-full flex items-center justify-between mb-2'>
                         <b className='text-lg line-clamp-1'>{category.name}</b>
-                        <CategoryCardOptions/>
+                        <CategoryCardOptions id={`${category.id} `}/>
                     </div>
                     <p className="text-start line-clamp-3">{category.description}</p>
                 </CardFooter>
@@ -40,24 +39,5 @@ export const CategoryCard = ({ category }: Props) => {
             <ModalCategory category={category} isOpen={isOpen} onOpenChange={onOpenChange} />
 
         </>
-    )
-}
-
-
-export function CategoryCardOptions() {
-    return (
-        <Dropdown>
-            <DropdownTrigger>
-                <div>
-                    <LuMoreVertical size={ 22 } />
-                </div>
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Static Actions">
-                <DropdownItem key="edit">Editar</DropdownItem>
-                <DropdownItem key="delete" className="text-danger" color="danger">
-                    Eliminar
-                </DropdownItem>
-            </DropdownMenu>
-        </Dropdown>
     )
 }

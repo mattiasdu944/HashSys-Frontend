@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 
-import { createCategory } from "../../inventory";
+import { createCategory } from "..";
 
 import { LuPlus } from "react-icons/lu";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Textarea } from "@nextui-org/react";

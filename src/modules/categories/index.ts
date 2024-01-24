@@ -1,9 +1,11 @@
 // ACTIONS
 export * from './actions/create-category'
+export * from './actions/delete-category'
 export * from './actions/get-categories'
 
 // COMPONENTS
 export * from './components/CategoryCard'
+export * from './components/CategoryCardOptions'
 export * from './components/CategoryList'
 export * from './components/ModalCategory'
 export * from './components/NewCategoryModal'
