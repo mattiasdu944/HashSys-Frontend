@@ -39,6 +39,7 @@ export const CategoryTable = ({ categories }: Props) => {
                     <TableColumn className='font-semibold text-sm'>Imagen</TableColumn>
                     <TableColumn className='font-semibold text-sm'>Nombre</TableColumn>
                     <TableColumn className='font-semibold text-sm'>Creado</TableColumn>
+                    <TableColumn className='font-semibold text-sm'>Ultima actualización</TableColumn>
                     <TableColumn className='font-semibold text-sm'>Acciones</TableColumn>
                 </TableHeader>
                 <TableBody>
@@ -70,6 +71,7 @@ export const CategoryTable = ({ categories }: Props) => {
                                 </TableCell>
                                 <TableCell>{category.name}</TableCell>
                                 <TableCell>{formatDate(category.createdAt)}</TableCell>
+                                <TableCell>{formatDate(category.updatedAt)}</TableCell>
                                 <TableCell className='flex'>
                                     <ModalCategory category={category} />
                                     <EditCategoryModal category={category} />

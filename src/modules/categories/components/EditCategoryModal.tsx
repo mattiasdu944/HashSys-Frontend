@@ -1,20 +1,21 @@
 'use client'
 import { useState } from "react";
 
-import { ICategory } from "..";
+import { ICategory, updateCategory } from "..";
 
 import { LuPen } from "react-icons/lu";
-import { 
-    Modal, 
-    ModalContent, 
-    ModalHeader, 
-    ModalBody, 
-    ModalFooter, 
-    Button, 
-    useDisclosure, 
-    Textarea, 
-    Input 
+import {
+    Modal,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Button,
+    useDisclosure,
+    Textarea,
+    Input
 } from "@nextui-org/react";
+import { toast } from "sonner";
 
 
 interface Props {
@@ -23,17 +24,56 @@ interface Props {
 
 export const EditCategoryModal = ({ category }: Props) => {
 
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
-    const [hasError, setHasError] = useState({
-        message: '',
-        isError: false
-    });
-    
+    const [isLoading, setIsLoading] = useState(false);
+    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
 
-    const handleSubmit = async () => {
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+
+        e.preventDefault();
+
+        setIsLoading(true);
+
+        const { categoryName, description, image } = e.target as HTMLFormElement;
+
+
+        if (categoryName.value.trim() === '' || description.value.trim() === '') {
+            toast.error('Datos incorrectos', {
+                description: "Debe llenar todos los campos",
+            });
+
+            setIsLoading(false);
+
+            return;
+        };
+
+        const formData = new FormData();
+
+        formData.append('id', `${category.id}`);
+        formData.append('name', categoryName.value);
+        formData.append('description', description.value);
+        formData.append('image', image.files[0]);
+
+        const { isError, message } = await updateCategory(formData);
+        
+        if (isError) {
+            toast.error('Ocurrio un error', {
+                description: message,
+            });
+
+            setIsLoading(false);
+
+            return;
+        }
+
+        onClose();
+
+        toast.success('Categoria actualizada', {
+            description: 'Se actualizo la categoria ' + categoryName.value
+        });
+
+        setIsLoading(false);
     }
 
 
@@ -45,14 +85,8 @@ export const EditCategoryModal = ({ category }: Props) => {
                 <ModalContent>
                     {(onClose) => (
                         <form noValidate onSubmit={handleSubmit}>
-                            <ModalHeader className="flex flex-col gap-1">Editar categoria { category.name }</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1">Editar categoria {category.name}</ModalHeader>
                             <ModalBody>
-
-                                {
-                                    hasError.isError && (
-                                        <p className="text-red-500">{hasError.message}</p>
-                                    )
-                                }
 
                                 <div className='relative'>
                                     <input
@@ -65,11 +99,11 @@ export const EditCategoryModal = ({ category }: Props) => {
                                 <Input
                                     name="categoryName"
                                     isRequired
-                                    defaultValue={ category.name }
+                                    defaultValue={category.name}
                                     label="Nombre de la categoria"
                                 />
                                 <Textarea
-                                    defaultValue={ category.description }
+                                    defaultValue={category.description}
                                     name="description"
                                     isRequired
                                     label="Descripción"
@@ -79,8 +113,8 @@ export const EditCategoryModal = ({ category }: Props) => {
                                 <Button color="danger" variant="light" onPress={onClose}>
                                     Cerrar
                                 </Button>
-                                <Button className="btn-primary" type="submit">
-                                    Guardar
+                                <Button isLoading={ isLoading } isDisabled={ isLoading } className="btn-primary" type="submit">
+                                    Actualizar
                                 </Button>
 
                             </ModalFooter>

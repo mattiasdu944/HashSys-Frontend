@@ -2,6 +2,7 @@
 export * from './actions/create-category'
 export * from './actions/delete-category'
 export * from './actions/get-categories'
+export * from './actions/update-category'
 
 // COMPONENTS
 export * from './components/CategoryCardOptions'
