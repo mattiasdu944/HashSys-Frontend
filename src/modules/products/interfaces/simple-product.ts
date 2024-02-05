@@ -10,9 +10,17 @@ export interface ISimpleProduct {
             slug: string;
         };
         productType: string;
-        images:      any[];
+        images:      IProductImages[];
         createdAt:   string;
         updatedAt:   string;
     
     
+}
+
+interface IProductImages {
+    id: number;
+    image: string;
+    product_id: string;
+    created_at: string;
+    updated_at: string;
 }

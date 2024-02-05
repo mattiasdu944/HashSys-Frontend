@@ -1,16 +1,16 @@
 'use client'
 import Image from 'next/image';
-import { ISimpleProduct } from '../..'
-
+import { ISimpleProduct } from '..';
 import NotImage from "@/assets/images/not-image.jpg";
+
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/table'
-import { Skeleton } from '@nextui-org/react';
 
 interface Props {
     products: ISimpleProduct[];
 }
 
 export const ProductsTable = ({ products }: Props) => {
+    console.log(products)
     return (
         <section className='container'>
             <Table
@@ -46,7 +46,8 @@ export const ProductsTable = ({ products }: Props) => {
                                                 alt={ product.name }
                                                 width={ 100 }
                                                 height={ 100 }
-                                                src={ product.images[0] }
+                                                className='max-w-[50px]'
+                                                src={ product.images[0].image }
                                             />
                                         )
                                         : (

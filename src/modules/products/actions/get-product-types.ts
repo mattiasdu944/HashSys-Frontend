@@ -1,7 +1,7 @@
 'use server'
 import inventoryDb from "@/config/api/inventoryDb";
 import { cookies } from "next/headers";
-import { IProductTypesResponse } from "../../interfaces/products/product-types-response";
+import { IProductTypesResponse } from "../interfaces/product-types-response";
 
 
 export async function getAllProductTypes() {

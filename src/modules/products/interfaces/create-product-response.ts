@@ -6,6 +6,7 @@ export interface ICreateProductResponse {
 }
 
 interface Product {
+    id:              string;
     name:            string;
     category_id:     number;
     description:     string;

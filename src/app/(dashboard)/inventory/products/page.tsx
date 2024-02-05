@@ -1,7 +1,7 @@
 
 import { LuPlus } from "react-icons/lu";
 import { TitlePage } from "@/modules/shared";
-import { ProductReportCard, ProductsTable, getAllProducts } from "@/modules/inventory";
+import { ProductReportCard, ProductsTable, getAllProducts } from "@/modules/products";
 
 
 export default async function ProductsPage() {

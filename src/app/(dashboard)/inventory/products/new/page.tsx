@@ -1,6 +1,7 @@
+
 import { TitlePage } from "@/modules/shared";
-import { NewProductForm, getAllProductTypes, getCategories } from "@/modules/inventory";
-// import { getAllProductTypes } from "@/modules/inventory/actions/products/get-product-types";
+import { getCategories } from "@/modules/categories";
+import { NewProductForm, getAllProductTypes } from "@/modules/products";
 
 export default async function NewProductPage() {
 

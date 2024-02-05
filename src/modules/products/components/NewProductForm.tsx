@@ -1,13 +1,11 @@
 'use client'
 import { ChangeEvent, useState } from 'react';
 
-import { ICategory, IProductType, createProduct } from '../..';
+import { ICategory } from '@/modules/categories';
+import { IProductType, createProduct } from '..';
+import { Button, Input, Radio, RadioGroup, Select, SelectItem, Textarea } from '@nextui-org/react';
+import { toast } from 'sonner';
 
-import { Button } from '@nextui-org/button';
-import { Input, Textarea } from '@nextui-org/input';
-import { RadioGroup, Radio } from '@nextui-org/radio';
-import { Select, SelectItem } from '@nextui-org/select';
-import { validateForm } from '@/utils';
 
 interface Props {
     categories: ICategory[]
@@ -18,6 +16,7 @@ export const NewProductForm = ({ categories, productTypes }: Props) => {
 
     const inputWrapper = 'border-black/20 border-[1px] shadow-none'
 
+    const [isLoading, setIsLoading] = useState(false);
     const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -30,30 +29,51 @@ export const NewProductForm = ({ categories, productTypes }: Props) => {
         }
     };
 
-    // const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
-    //     e.preventDefault();
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+        e.preventDefault();
 
-    //     const formData: Record<string, string> = {};
-    //     const formElements = e.target as HTMLFormElement;
+        const { productName, description, code, price, exchange_rate, product_type_id, category_id, images } = e.target as HTMLFormElement;
 
-    //     // Recopilar datos del formulario
-    //     Array.from(formElements.elements).forEach((element) => {
-    //         if (element instanceof HTMLInputElement && element.name) {
-    //             formData[element.name] = element.value;
-    //         }
-    //     });
 
-    //     if (!validateForm(formData)) {
-    //         console.log('Error: Todos los campos deben ser completados.');
-    //         return;
-    //     }
 
-    // }
+        const formData = new FormData();
+
+        formData.append('name', productName.value);
+        formData.append('description', description.value);
+        formData.append('code', code.value);
+        formData.append('price', price.value);
+        formData.append('exchange_rate', exchange_rate.value);
+        formData.append('product_type_id', product_type_id.value);
+        formData.append('category_id', category_id.value);
+
+        for (let i = 0; i! < images.files.length; i!++) {
+            formData.append('images', images.files[i!]);
+        }
+
+
+        const { message, isError } = await createProduct(formData);
+        
+        if (isError) {
+            toast.error('Ocurrio un error', {
+                description: message,
+            });
+
+            setIsLoading(false);
+
+            return;
+        }
+
+        
+
+    }
+
+
+
 
 
     return (
         <section className='mb-8'>
-            <form  noValidate action={createProduct} className='product__form'>
+            <form noValidate onSubmit={handleSubmit} className='product__form'>
                 <h2 className='mb-4'>Detalles del producto</h2>
                 <div className='flex flex-col gap-4 mb-8'>
                     <Input
