@@ -8,6 +8,8 @@ import { Button } from '@nextui-org/button'
 
 export const LoginForm = () => {
 
+    const inputWrapper = 'border-black/20 border-[1px] shadow-none'
+
     const [isLoading, setIsLoading] = useState(false);
     const [hasError, setHasError] = useState({
         isError: false,
@@ -48,6 +50,7 @@ export const LoginForm = () => {
                     variant='bordered'
                     labelPlacement='outside'
                     size='lg'
+                    classNames={{inputWrapper}}
                 />
 
                 <Input
@@ -58,6 +61,8 @@ export const LoginForm = () => {
                     labelPlacement='outside'
                     type='password'
                     size='lg'
+                    classNames={{inputWrapper}}
+
                 />
 
                 <Button isLoading={ isLoading } disabled={ isLoading } type='submit' fullWidth size='lg' className='btn-primary'>Iniciar Sesion</Button>
