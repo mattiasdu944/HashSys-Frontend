@@ -5,6 +5,8 @@ import { v2 as cloudinary } from 'cloudinary';
 import { ICreateProductResponse } from '..';
 import inventoryDb from "@/config/api/inventoryDb";
 import { isAxiosError } from 'axios';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 
 
@@ -52,6 +54,8 @@ export async function createProduct(formData: FormData) {
             })
         }
 
+        revalidatePath('/inventory/products');
+        
         return {
             isError: false,
             message: 'Se creo el producto ' + productDetails.name

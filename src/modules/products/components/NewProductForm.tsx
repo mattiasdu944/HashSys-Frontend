@@ -1,10 +1,11 @@
 'use client'
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
+import { toast } from 'sonner';
 import { ICategory } from '@/modules/categories';
 import { IProductType, createProduct } from '..';
 import { Button, Input, Radio, RadioGroup, Select, SelectItem, Textarea } from '@nextui-org/react';
-import { toast } from 'sonner';
 
 
 interface Props {
@@ -16,10 +17,14 @@ export const NewProductForm = ({ categories, productTypes }: Props) => {
 
     const inputWrapper = 'border-black/20 border-[1px] shadow-none'
 
+    const router = useRouter();
+    
     const [isLoading, setIsLoading] = useState(false);
     const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
-    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let files = undefined;
         files = e.target.files;
 
@@ -32,9 +37,9 @@ export const NewProductForm = ({ categories, productTypes }: Props) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
 
+        setIsLoading(true);
+
         const { productName, description, code, price, exchange_rate, product_type_id, category_id, images } = e.target as HTMLFormElement;
-
-
 
         const formData = new FormData();
 
@@ -63,7 +68,15 @@ export const NewProductForm = ({ categories, productTypes }: Props) => {
             return;
         }
 
+
+                
+        toast.success('Producto creado', {
+            description: message
+        });
+
+        setIsLoading(false);
         
+        router.push('/inventory/products');
 
     }
 
@@ -185,7 +198,7 @@ export const NewProductForm = ({ categories, productTypes }: Props) => {
                     </Select>
                 </div>
 
-                <Button type="submit" className='btn-primary mt-8'>Guardar producto</Button>
+                <Button isLoading={ isLoading } isDisabled={ isLoading } type="submit" className='btn-primary mt-8'>Guardar producto</Button>
             </form>
         </section>
     )

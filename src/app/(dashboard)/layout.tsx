@@ -19,7 +19,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
                     position: 'absolute'
                 }} />
                 <SideMenu />
-                <main className="h-screen w-full overflow-y-auto">
+                <main className="h-screen w-full overflow-y-auto pb-12">
                     <NavMenu user={user} />
                     {children}
                 </main>

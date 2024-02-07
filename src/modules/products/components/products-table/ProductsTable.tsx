@@ -1,8 +1,9 @@
 'use client'
 import Image from 'next/image';
-import { ISimpleProduct } from '..';
+import { ISimpleProduct } from '../..';
 import NotImage from "@/assets/images/not-image.jpg";
 
+import { ProductTableActions } from './ProductTableActions';
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/table'
 
 interface Props {
@@ -10,7 +11,6 @@ interface Props {
 }
 
 export const ProductsTable = ({ products }: Props) => {
-    console.log(products)
     return (
         <section className='container'>
             <Table
@@ -29,6 +29,7 @@ export const ProductsTable = ({ products }: Props) => {
                 <TableHeader>
                     <TableColumn className='font-semibold text-sm'>Codigo</TableColumn>
                     <TableColumn className='font-semibold text-sm'>Imagen</TableColumn>
+                    <TableColumn className='font-semibold text-sm'>Nombre</TableColumn>
                     <TableColumn className='font-semibold text-sm'>Categoria</TableColumn>
                     <TableColumn className='font-semibold text-sm'>Precio</TableColumn>
                     <TableColumn className='font-semibold text-sm'>Acciones</TableColumn>
@@ -61,10 +62,13 @@ export const ProductsTable = ({ products }: Props) => {
                                         )
                                     }
                                 </TableCell>
+                                <TableCell>{ product.name }</TableCell>
                                 <TableCell>{ product.category.name }</TableCell>
                                 <TableCell>{ product.price }</TableCell>
                                 <TableCell>
-                                    Acciones
+                                    <ProductTableActions
+                                        product={ product }
+                                    />
                                 </TableCell>
                             </TableRow>
 
