@@ -86,6 +86,19 @@
         @apply bg-transparent outline-none w-full
     }
 
+    /* APPBAR */
+    .appbar {
+        @apply w-full border-b border-b-gray-300
+    }
+
+    .appbar__container {
+        @apply container grid grid-cols-2 md:grid-cols-3 py-4
+    }
+
+    .appbar__menu {
+        @apply absolute z-[2] h-full w-full bg-white md:bg-transparent -top-[100%] left-0 right-0 md:relative flex flex-col md:flex-row justify-center items-center gap-6 font-bold uppercase text-sm
+    }
+
     /* CATEGORIES */
     .category__list {
         @apply gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4
