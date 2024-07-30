@@ -1,8 +1,5 @@
 import { ReactNode } from "react";
-
-import { LuArrowDown, LuArrowUp, LuClipboardList, LuHome, LuPackage, LuUsers, LuUsers2 } from "react-icons/lu";
-import { TbArrowDown, TbArrowUp, TbHome, TbPackageImport, TbSettings2, TbUsers } from "react-icons/tb";
-
+import { ArrowDown01Icon, ArrowUp01Icon, ClipboardIcon, Home01Icon, PackageIcon, Settings01Icon, UserGroupIcon } from "hugeicons-react";
 
 interface SideMenuOption {
     name: string;
@@ -15,43 +12,43 @@ export const sidemenu_options: SideMenuOption[] = [
     {
         name: 'Inicio',
         path: '/home',
-        icon: <LuHome size={ 22 }/>,
+        icon: <Home01Icon size={ 22 }/>,
         role: 'Empleado',
     },
     {
         name: 'Inventario',
         path: '/inventory/products',
-        icon: <LuClipboardList  size={ 22 }/>,
+        icon: <ClipboardIcon  size={ 22 }/>,
         role: 'Administrador',
     },
     {
         name: 'Clientes',
         path: '/clients',
-        icon: <LuUsers2 size={ 22 }/>,
+        icon: <UserGroupIcon size={ 22 }/>,
         role: 'Administrador',
     },
     {
         name: 'Ventas',
         path: '/sales',
-        icon: <LuArrowDown size={ 22 }/>,
+        icon: <ArrowDown01Icon size={ 22 }/>,
         role: 'Administrador',
     },
     {
         name: 'Gastos',
         path: '/expenses',
-        icon: <LuArrowUp size={ 22 }/>,
+        icon: <ArrowUp01Icon size={ 22 }/>,
         role: 'Administrador',
     },
     {
         name: 'Proveedores',
         path: '/providers',
-        icon: <LuPackage size={ 22 }/>,
+        icon: <PackageIcon size={ 22 }/>,
         role: 'Administrador',
     },
     {
         name: 'Configuración',
         path: '/settings',
-        icon: <TbSettings2 size={ 22 }/>,
+        icon: <Settings01Icon size={ 22 }/>,
         role: 'Administrador',
     },
 ]

@@ -1,6 +1,6 @@
 'use client'
 
-import { AiOutlineClose } from "react-icons/ai";
+import { Cancel01Icon } from "hugeicons-react";
 import { useUIStore } from "../..";
 
 export const CloseSideMenuButton = () => {
@@ -9,7 +9,7 @@ export const CloseSideMenuButton = () => {
 
     return (
         <div onClick={closeSideMenu} className='md:hidden mx-auto mt-8 rounded-full p-2 bg-gray-100'>
-            <AiOutlineClose/>
+            <Cancel01Icon/>
         </div>
     )
 }

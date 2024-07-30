@@ -1,5 +1,5 @@
+import { ClipboardIcon, Layers01Icon, Store01Icon } from 'hugeicons-react';
 import Link from 'next/link';
-import { LuClipboardList, LuLayers, LuStore } from 'react-icons/lu';
 
 export const NavBar = () => {
 
@@ -10,7 +10,7 @@ export const NavBar = () => {
                     <li>
                         <Link className="flex items-center gap-2 hover:text-primary transition-all" href='/inventory/products'>
                             <div className="bg-primary-soft text-gray-500 p-2 rounded-full text-xl">
-                                <LuClipboardList />
+                                <ClipboardIcon />
                             </div>
                             <p className="font-medium text-black">
                                 Productos
@@ -22,7 +22,7 @@ export const NavBar = () => {
                     <li>
                         <Link className="flex items-center gap-2 hover:text-primary transition-all" href='/inventory/categories'>
                             <div className="bg-primary-soft text-gray-500 p-2 rounded-full text-xl">
-                                <LuLayers />
+                                <Layers01Icon />
                             </div>
                             <p className="font-medium text-black">
                                 Categorias
@@ -34,7 +34,7 @@ export const NavBar = () => {
                     <li>
                         <Link className="flex items-center gap-2 hover:text-primary transition-all" href='/inventory/warehouses'>
                             <div className="bg-primary-soft text-gray-500 p-2 rounded-full text-xl">
-                                <LuStore />
+                                <Store01Icon />
                             </div>
                             <p className="font-medium text-black">
                                 Almacenes

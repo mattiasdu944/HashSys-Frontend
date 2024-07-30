@@ -1,8 +1,8 @@
 'use client'
 import { User } from '@nextui-org/user';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/dropdown';
-import { LuLogOut, LuUser2 } from 'react-icons/lu';
 import { User as IUser } from '@/modules/auth/interfaces/user';
+import { Logout01Icon, UserIcon } from 'hugeicons-react';
 
 
 interface Props {
@@ -29,10 +29,10 @@ export const Avatar = ({ user }: Props) => {
                     <p className="font-bold">Sesion iniciada con</p>
                     <p className="font-bold">{ user.email }</p>
                 </DropdownItem>
-                <DropdownItem startContent={ <LuUser2/> } key="profile">
+                <DropdownItem startContent={ <UserIcon/> } key="profile">
                     Perfil
                 </DropdownItem>
-                <DropdownItem startContent={ <LuLogOut/> } key="logout" color="danger">
+                <DropdownItem startContent={ <Logout01Icon/> } key="logout" color="danger">
                     Log Out
                 </DropdownItem>
             </DropdownMenu>

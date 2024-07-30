@@ -7,7 +7,7 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
     const validate = await validateToken();
     
     if( validate ){
-        redirect('/')
+        redirect('/admin')
     }
     
     return (

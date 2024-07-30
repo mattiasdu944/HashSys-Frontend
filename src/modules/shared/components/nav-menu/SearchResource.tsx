@@ -1,5 +1,4 @@
-
-import { LuSearch } from 'react-icons/lu';
+import { Search01Icon } from "hugeicons-react"
 
 export const SearchResource = () => {
     return (
@@ -9,7 +8,7 @@ export const SearchResource = () => {
                 type="text"
             />
             <span className='cursor-pointer'>
-                <LuSearch className="text-slate-400" size={20} />
+                <Search01Icon className="text-slate-400" size={20} />
             </span>
         </div>
     )

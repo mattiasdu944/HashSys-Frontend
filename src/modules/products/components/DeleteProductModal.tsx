@@ -1,11 +1,11 @@
 'use client'
 
-import { deleteProduct } from "..";
-
-import { LuTrash2 } from "react-icons/lu";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
 import { useState } from "react";
 import { toast } from "sonner";
+
+import { deleteProduct } from "..";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
+import { Delete01Icon } from "hugeicons-react";
 
 interface Props {
     productName: string;
@@ -48,7 +48,7 @@ export const DeleteProductModal = ({ productName, productId }: Props) => {
 
     return (
         <>
-            <Button onPress={ onOpen } variant='light' color='danger' isIconOnly startContent={ <LuTrash2 size={ 18 }/> } />
+            <Button onPress={ onOpen } variant='light' color='danger' isIconOnly startContent={ <Delete01Icon size={ 18 }/> } />
 
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>

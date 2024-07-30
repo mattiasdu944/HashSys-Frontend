@@ -1,7 +1,7 @@
 
-import { LuPlus } from "react-icons/lu";
 import { TitlePage } from "@/modules/shared";
 import { ProductReportCard, ProductsTable, getAllProducts } from "@/modules/products";
+import { Add01Icon } from "hugeicons-react";
 
 
 export default async function ProductsPage() {
@@ -13,7 +13,7 @@ export default async function ProductsPage() {
         <>
             <TitlePage
                 path="/inventory/products/new"
-                iconButton={<LuPlus />}
+                iconButton={<Add01Icon />}
                 button="Crear producto"
                 title="Productos" subTitle="Gestiona los productos de tu empresa"
             />

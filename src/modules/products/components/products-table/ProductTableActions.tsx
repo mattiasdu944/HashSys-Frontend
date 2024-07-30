@@ -1,9 +1,9 @@
 import { Button } from '@nextui-org/button';
 import { useRouter } from 'next/navigation';
 
-import { LuEye } from 'react-icons/lu';
 import { DeleteProductModal } from '../DeleteProductModal';
 import { ISimpleProduct } from '../..';
+import { EyeIcon } from 'hugeicons-react';
 
 interface Props {
     product: ISimpleProduct;
@@ -24,7 +24,7 @@ export const ProductTableActions = ({ product }: Props) => {
 
     return (
         <div>
-            <Button onClick={handleNavigate} variant='light' color='primary' isIconOnly startContent={<LuEye size={18} />} />
+            <Button onClick={handleNavigate} variant='light' color='primary' isIconOnly startContent={<EyeIcon size={18} />} />
             <DeleteProductModal
                 productName={product.name}
                 productId={ product.id }
