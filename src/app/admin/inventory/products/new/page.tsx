@@ -5,10 +5,8 @@ import { NewProductForm, getAllProductTypes } from "@/modules/products";
 
 export default async function NewProductPage() {
 
-    const categoriePromise = getCategories();
-    const productTypesPromise = getAllProductTypes();
+    const categories = await getCategories();
 
-    const [ categories, productTypes ] = await Promise.all([categoriePromise, productTypesPromise]);
 
     return (
         <>
@@ -19,7 +17,6 @@ export default async function NewProductPage() {
 
             <NewProductForm
                 categories={ categories } 
-                productTypes={ productTypes }
             />
         </>
     );

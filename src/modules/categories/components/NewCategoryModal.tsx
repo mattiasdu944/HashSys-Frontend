@@ -1,11 +1,11 @@
 'use client'
 import { useState } from "react";
-
 import { createCategory } from "..";
 
-import { LuPlus } from "react-icons/lu";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Textarea } from "@nextui-org/react";
+
 import { toast } from "sonner";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Textarea } from "@nextui-org/react";
+import { Add01Icon } from "hugeicons-react";
 
 
 
@@ -88,7 +88,7 @@ export const NewCategoryModal = () => {
 
     return (
         <>
-            <Button color="primary" className="bg-gradient" startContent={<LuPlus />} onPress={onOpen}>Crea una categoria</Button>
+            <Button color="primary" className="bg-gradient" startContent={<Add01Icon />} onPress={onOpen}>Crea una categoria</Button>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                     {(onClose) => (

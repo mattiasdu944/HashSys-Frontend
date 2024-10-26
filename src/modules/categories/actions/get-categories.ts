@@ -1,7 +1,7 @@
 'use server'
 import { cookies } from 'next/headers';
 import inventoryDb from '@/config/api/inventoryDb';
-import { CategoriesResponse } from '../../inventory';
+import { CategoriesResponse } from '../interfaces/categories-response';
 
 
 
@@ -14,6 +14,8 @@ export async function getCategories() {
             Authorization: 'Bearer ' + token!.value
         }
     })
+
+    console.log(data);
 
     return data.categories;
 

@@ -15,20 +15,20 @@ cloudinary.config(process.env.CLOUDINARY_URL ?? '');
 export async function createProduct(formData: FormData) {
 
     const token = cookies().get('INV_AUTH_TOKEN');
-
-    const product = {
-        name: formData.get('name'),
-        description: formData.get('description'),
-        code: formData.get('code'),
-        price: formData.get('price'),
-        exchange_rate: formData.get('exchange_rate'),
-        product_type_id: formData.get('product_type_id'),
-        category_id: formData.get('category_id'),
-    }
-
-    const images = formData.getAll('images');
-
     try {
+
+        const product = {
+            name: formData.get('name'),
+            description: formData.get('description'),
+            code: formData.get('code'),
+            unitPrice: formData.get('unitPrice'),
+            salePrice: formData.get('salePrice'),
+            exchange_rate: formData.get('exchange_rate'),
+            category_id: formData.get('category_id'),
+        }
+
+        const images = formData.getAll('images');
+
 
         const { data } = await inventoryDb.post<ICreateProductResponse>('/products', product, {
             headers: {
@@ -40,22 +40,22 @@ export async function createProduct(formData: FormData) {
 
         const imagesUrl = await uploadImage(images as File[]);
 
-        if( imagesUrl ){
+        if (imagesUrl) {
             await inventoryDb.post(
-            '/products/images',
-            {
-                images: [...imagesUrl],
-                productId: productDetails.id
-            }, 
-            {
-                headers: {
-                    Authorization: 'Bearer ' + token?.value
-                }
-            })
+                '/products/images',
+                {
+                    images: [...imagesUrl],
+                    productId: productDetails.id
+                },
+                {
+                    headers: {
+                        Authorization: 'Bearer ' + token?.value
+                    }
+                })
         }
 
-        revalidatePath('/inventory/products');
-        
+        revalidatePath('/admin/inventory/products');
+
         return {
             isError: false,
             message: 'Se creo el producto ' + productDetails.name
@@ -63,6 +63,7 @@ export async function createProduct(formData: FormData) {
 
     } catch (error) {
         console.log(error)
+
         if (isAxiosError(error)) {
             return {
                 isError: true,

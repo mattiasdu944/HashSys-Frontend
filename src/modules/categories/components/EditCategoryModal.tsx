@@ -1,21 +1,11 @@
 'use client'
 import { useState } from "react";
-
 import { ICategory, updateCategory } from "..";
 
-import { LuPen } from "react-icons/lu";
-import {
-    Modal,
-    ModalContent,
-    ModalHeader,
-    ModalBody,
-    ModalFooter,
-    Button,
-    useDisclosure,
-    Textarea,
-    Input
-} from "@nextui-org/react";
 import { toast } from "sonner";
+
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Textarea, Input } from "@nextui-org/react";
+import { PencilIcon } from "hugeicons-react";
 
 
 interface Props {
@@ -79,7 +69,7 @@ export const EditCategoryModal = ({ category }: Props) => {
 
     return (
         <>
-            <Button onPress={onOpen} isIconOnly variant='light' radius='full' color='primary' startContent={<LuPen size={18} />} />
+            <Button onPress={onOpen} isIconOnly variant='light' radius='full' color='primary' startContent={<PencilIcon size={18} />} />
 
             <Modal placement='center' isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>

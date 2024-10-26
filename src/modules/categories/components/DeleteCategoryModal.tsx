@@ -1,19 +1,11 @@
 'use client'
-
-import {
-    Modal,
-    ModalContent,
-    ModalHeader,
-    ModalBody,
-    ModalFooter,
-    Button,
-    useDisclosure,
-} from "@nextui-org/react";
 import { useState } from "react";
 
-import { LuTrash2 } from "react-icons/lu";
-import { deleteCategory } from '..';
 import { toast } from "sonner";
+
+import { deleteCategory } from '..';
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import { Delete01Icon } from "hugeicons-react";
 
 interface Props {
     categoryName: string;
@@ -51,7 +43,7 @@ export const DeleteCategoryModal = ({ categoryName, categoryId }: Props) => {
 
     return (
         <>
-            <Button onPress={onOpen} isIconOnly variant='light' radius='full' color='danger' startContent={<LuTrash2 size={18} />} />
+            <Button onPress={onOpen} isIconOnly variant='light' radius='full' color='danger' startContent={<Delete01Icon size={18} />} />
 
             <Modal placement='center' isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>

@@ -1,7 +1,7 @@
 'use client'
+import { MoreVerticalIcon } from 'hugeicons-react'
 import { deleteCategory } from '..'
 
-import { LuMoreVertical } from 'react-icons/lu'
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react'
 
 
@@ -14,14 +14,14 @@ export const CategoryCardOptions = ({ id }: Props) => {
         <Dropdown>
             <DropdownTrigger>
                 <div>
-                    <LuMoreVertical size={22} />
+                    <MoreVerticalIcon size={22} />
                 </div>
             </DropdownTrigger>
             <DropdownMenu aria-label="Static Actions">
                 <DropdownItem key="edit">
                     {/* <EditCategoryModal/> */}
                 </DropdownItem>
-                <DropdownItem onClick={() => deleteCategory( id )} key="delete" className="text-danger" color="danger">
+                <DropdownItem onClick={() => deleteCategory( +id )} key="delete" className="text-danger" color="danger">
                     Eliminar
                 </DropdownItem>
             </DropdownMenu>

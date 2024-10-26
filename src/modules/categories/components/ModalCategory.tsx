@@ -4,8 +4,8 @@ import NotImage from "@/assets/images/not-image.jpg";
 import { ICategory } from "..";
 import { formatDate } from "@/utils";
 
-import { LuEye } from "react-icons/lu";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import { EyeIcon } from "hugeicons-react";
 
 interface Props {
     category: ICategory;
@@ -17,7 +17,7 @@ export const ModalCategory = ({ category }: Props) => {
 
     return (
         <>
-            <Button onPress={ onOpen } isIconOnly variant='light' radius='full' color='primary' startContent={<LuEye size={18} />} />
+            <Button onPress={ onOpen } isIconOnly variant='light' radius='full' color='primary' startContent={<EyeIcon size={18} />} />
 
             <Modal placement='center' isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>

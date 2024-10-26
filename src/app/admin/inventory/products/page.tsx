@@ -12,7 +12,7 @@ export default async function ProductsPage() {
     return (
         <>
             <TitlePage
-                path="/inventory/products/new"
+                path="/admin/inventory/products/new"
                 iconButton={<Add01Icon />}
                 button="Crear producto"
                 title="Productos" subTitle="Gestiona los productos de tu empresa"
