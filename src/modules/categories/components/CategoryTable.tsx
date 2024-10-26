@@ -6,8 +6,6 @@ import NotImage from "@/assets/images/not-image.jpg";
 import { formatDate } from '@/utils';
 import { ICategory, ModalCategory, EditCategoryModal, DeleteCategoryModal } from '..'
 
-import { LuTrash2 } from 'react-icons/lu';
-import { Button } from '@nextui-org/button';
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/table'
 
 

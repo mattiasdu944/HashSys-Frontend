@@ -8,7 +8,7 @@ export const NavBar = () => {
             <div className="container">
                 <ul className="flex flex-col md:flex-row gap-[3rem]">
                     <li>
-                        <Link className="flex items-center gap-2 hover:text-primary transition-all" href='/inventory/products'>
+                        <Link className="flex items-center gap-2 hover:text-primary transition-all" href='/admin/inventory/products'>
                             <div className="bg-primary-soft text-gray-500 p-2 rounded-full text-xl">
                                 <ClipboardIcon />
                             </div>
@@ -20,7 +20,7 @@ export const NavBar = () => {
                     </li>
 
                     <li>
-                        <Link className="flex items-center gap-2 hover:text-primary transition-all" href='/inventory/categories'>
+                        <Link className="flex items-center gap-2 hover:text-primary transition-all" href='/admin/inventory/categories'>
                             <div className="bg-primary-soft text-gray-500 p-2 rounded-full text-xl">
                                 <Layers01Icon />
                             </div>
@@ -32,7 +32,7 @@ export const NavBar = () => {
                     </li>
 
                     <li>
-                        <Link className="flex items-center gap-2 hover:text-primary transition-all" href='/inventory/warehouses'>
+                        <Link className="flex items-center gap-2 hover:text-primary transition-all" href='/admin/inventory/warehouses'>
                             <div className="bg-primary-soft text-gray-500 p-2 rounded-full text-xl">
                                 <Store01Icon />
                             </div>

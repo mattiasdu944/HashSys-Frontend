@@ -6,7 +6,7 @@ import { Add01Icon } from "hugeicons-react";
 
 export default async function ProductsPage() {
 
-    const { meta, products } = await getAllProducts();
+    const products = await getAllProducts();
 
 
     return (
@@ -18,7 +18,7 @@ export default async function ProductsPage() {
                 title="Productos" subTitle="Gestiona los productos de tu empresa"
             />
             <ProductReportCard
-                totalProducts={meta.total}
+                totalProducts={100}
             />
             <ProductsTable
                 products={products}

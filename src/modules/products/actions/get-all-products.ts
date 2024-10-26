@@ -1,25 +1,9 @@
-'use server';
-import { cookies } from "next/headers";
-
-import { IProductsResponse } from "..";
-import inventoryDb from "@/config/api/inventoryDb";
+'use server'
 
 
-export async function getAllProducts( page: number = 1 ) {
-    
-    const token = cookies().get('INV_AUTH_TOKEN');
+export async function getAllProducts( ) {
 
-    try {
-        const { data } = await inventoryDb.get<IProductsResponse>('/products', {
-            headers: {
-                Authorization: 'Bearer ' + token?.value,
-            }
-        });
-    
-        return data;
-        
-    } catch (error) {
-        throw error;
-    }
+    return []
+
     
 }

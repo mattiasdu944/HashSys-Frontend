@@ -3,14 +3,21 @@
 import { cookies } from "next/headers";
 import { User } from "../interfaces/user";
 
-export async function useSession() {
-    const token = cookies().get('INV_AUTH_TOKEN');
-    const user: User = JSON.parse( cookies().get('INV_AUTH_USER')?.value as string  );
 
+export async function useSession() {
 
     return {
-        user,
-        token: token!.value
+        user: {
+            id: 1,
+            name: "Administrador",
+            lastname: "Apellido",
+            email: "admin@correo.com",
+            role: 'Administrador',
+            status: 'Activo',
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        },
+        token: "123123-123123"
     }
 
 }

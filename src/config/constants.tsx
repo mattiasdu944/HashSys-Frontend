@@ -17,7 +17,7 @@ export const sidemenu_options: SideMenuOption[] = [
     },
     {
         name: 'Inventario',
-        path: '/inventory/products',
+        path: '/admin/inventory/products',
         icon: <ClipboardIcon  size={ 22 }/>,
         role: 'Administrador',
     },
