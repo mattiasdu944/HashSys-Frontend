@@ -1,4 +1,4 @@
-import { useSession, validateToken } from "@/modules/auth";
+import { getSession, validateToken } from "@/modules/auth";
 import { NavMenu, SideMenu } from "@/modules/shared";
 import { redirect } from "next/navigation";
 import { Toaster } from "sonner";
@@ -10,7 +10,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         redirect('/auth/login');
     }
 
-    const { user } = await useSession();
+    const { user } = await getSession();
 
     return (
         <>

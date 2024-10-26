@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { ICategory } from '@/modules/categories';
 import { IProductType, createProduct } from '..';
 import { Button, Input, Radio, RadioGroup, Select, SelectItem, Textarea } from '@nextui-org/react';
+import Image from 'next/image';
 
 
 interface Props {
@@ -103,7 +104,7 @@ export const NewProductForm = ({ categories }: Props) => {
 
                     <div className='flex gap-4'>
                         {selectedImages.map((image, index) => (
-                            <img
+                            <Image
                                 key={index}
                                 src={image}
                                 alt={`Preview ${index}`}
